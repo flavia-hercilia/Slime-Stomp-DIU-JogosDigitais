@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fruits : MonoBehaviour
+public class Apple : MonoBehaviour
 {
     private SpriteRenderer sr;
     private CircleCollider2D circle;
     public GameObject collected;
-    public int Score;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,8 +32,7 @@ public class Fruits : MonoBehaviour
             circle.enabled = false;
             collected.SetActive(true);
 
-            GameController.totalScore += Score;
-            GameController.instance.UpdateScoreText();
+            GameController.instance.GainLife();
 
             Destroy(gameObject,0.3f);
         }

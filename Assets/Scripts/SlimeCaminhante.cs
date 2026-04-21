@@ -27,8 +27,7 @@ public class SlimeCaminhante : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameController.instance.ShowGameOver();
-            collision.gameObject.SetActive(false);
+            GameController.instance.LoseLife();
         }
     }
 }

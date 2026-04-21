@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ac062178c104869a7a2bf3554617fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeadCheck
-  jumpForce: 7
+  jumpForce: 5
   itemDropPrefab: {fileID: 0}
 --- !u!61 &1703210899267477973
 BoxCollider2D:
@@ -81,7 +81,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.03541279, y: 0.05902181}
+  m_Offset: {x: 0.021672964, y: 0.037267197}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -91,7 +91,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.50421715, y: 0.17369439}
+  m_Size: {x: 0.34392023, y: 0.08896587}
   m_EdgeRadius: 0
 --- !u!1001 &3760221841935974891
 PrefabInstance:
@@ -232,8 +232,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.003792472, y: 0.24811971}
-  m_Radius: 0.11546918
+  m_Offset: {x: -0.00017008712, y: 0.2683727}
+  m_Radius: 0.10196714
 --- !u!50 &5669070352248208632
 Rigidbody2D:
   serializedVersion: 5

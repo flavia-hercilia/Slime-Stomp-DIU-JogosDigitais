@@ -9,6 +9,8 @@ public class HeadCheck : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            GameController.instance.PlayEffect(GameController.instance.enemyDeathSound);
+            
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             if (rb != null)
             {

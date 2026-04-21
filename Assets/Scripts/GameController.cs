@@ -4,11 +4,32 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public int totalScore;
+    //mainmenu e play
+    [SerializeField] private string level1SceneName = "lvl1";
+    [SerializeField] private string mainMenuSceneName = "MainMenu";
+    
+    //score
+    public static int totalScore;
     public TextMeshProUGUI scoreText;
+
+    //vida
+    public static int lives = 1; 
+    public TextMeshProUGUI livesText;
+
+    //sons
+    public AudioSource bgMusic;
+    public AudioClip fruitSound;
+    public AudioClip playerHitSound;
+    public AudioClip enemyDeathSound;
+
+    //gameover e victory
     public GameObject gameOver;
     public GameObject victoryScreen; 
-    
+
+    //pause
+    [SerializeField] private GameObject pauseMenu;
+    private bool isPaused;
+
     public static GameController instance;
 
     void Awake() 
@@ -16,9 +37,81 @@ public class GameController : MonoBehaviour
         instance = this;
     }
 
+    void Start()
+    {
+        UpdateScoreText();
+        UpdateLivesText();
+    }
+
+    void Update()
+    {
+    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+    {
+        if (isPaused)
+        {
+            Resume();
+        }
+        else
+        {
+            Pause();
+        }
+    }
+    }
+
     public void UpdateScoreText()
     {
-        scoreText.text = totalScore.ToString();
+        if (scoreText != null) 
+        {
+            scoreText.text = totalScore.ToString();
+        }
+    }
+
+
+    public void UpdateLivesText()
+    {
+        if (livesText != null)
+        {
+            livesText.text = lives.ToString();
+        }
+    }
+
+    public void LoseLife()
+    {
+        PlayEffect(playerHitSound);
+        lives--;
+        UpdateLivesText();
+
+        if (lives <= 0)
+        {
+            lives = 0;
+            UpdateLivesText();
+            ShowGameOver();
+        }
+        else
+        {
+            Invoke("RestartLevel", 0.5f);
+        }
+    }
+
+    public void GainLife()
+    {
+        lives++;
+        UpdateLivesText();
+    }
+
+
+    public void Pause()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f; 
+        isPaused = true;
+    }
+
+    public void Resume()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f; 
+        isPaused = false;
     }
 
     public void ShowGameOver()
@@ -33,15 +126,38 @@ public class GameController : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public void RestartGame()
+    public void RestartLevel()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void BackToBegin()
+    public void PlayAgainFromStart()
+    {
+        totalScore = 0; 
+        lives = 1;      
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(level1SceneName);
+    }
+
+    public void PlayGame()
+    {
+        totalScore = 0;
+        lives = 1;
+        SceneManager.LoadScene(level1SceneName);
+    }
+
+    public void GoToMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0); 
+        SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    public void PlayEffect(AudioClip clip)
+    {
+        if (clip != null && bgMusic != null)
+        {
+            bgMusic.PlayOneShot(clip);
+        }
     }
 }

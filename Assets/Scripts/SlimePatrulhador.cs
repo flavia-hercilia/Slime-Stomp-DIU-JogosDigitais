@@ -42,9 +42,7 @@ public class InimigoPatrulha : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameController.instance.ShowGameOver();
-    
-            collision.gameObject.SetActive(false);
+            GameController.instance.LoseLife();
         }
 
     }
