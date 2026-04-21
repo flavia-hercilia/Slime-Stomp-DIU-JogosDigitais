@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bea5931f69334dbaad0abc47249f33e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlimeCaminhante
-  velocidade: 1
+  velocidade: 1.4
   limiteEsquerdo: -6.63
 --- !u!58 &4607790029451449289
 CircleCollider2D:
@@ -233,5 +233,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0013055587, y: 0.041491102}
-  m_Radius: 0.07767251
+  m_Offset: {x: -0.0032468252, y: 0.041490994}
+  m_Radius: 0.09494407

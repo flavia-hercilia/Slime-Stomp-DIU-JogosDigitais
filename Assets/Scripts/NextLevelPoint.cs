@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Finish : MonoBehaviour
+public class NextLevelPoint : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,7 +17,7 @@ public class Finish : MonoBehaviour
             }
             else
             {
-                Debug.Log("Você zerou o jogo! Não há mais fases.");
+                GameController.instance.ShowVictoryScreen();
             }
         }
     }
